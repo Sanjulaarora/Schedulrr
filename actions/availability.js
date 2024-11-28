@@ -70,7 +70,7 @@ export async function updateAvailability(data) {
     }
 
     const availabilityData = Object.entries(data).flatMap(
-      ([day, { isAvailable, startTime, endTime }]) => {
+      ([day, { isAvailable, startTime, endTime, meetType }]) => {
           if(isAvailable) {
               const baseDate = new Date().toISOString().split("T")[0]; // Getting current date in YYYY-MM-DD format
             

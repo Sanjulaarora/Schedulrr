@@ -39,6 +39,7 @@ export const availabilitySchema = z.object({
   saturday: daySchema,
   sunday: daySchema,
   timeGap: z.number().min(0, 'Time gap must be 0 or more mintues').int(),
+  meetType: z.boolean(),
 });  
 
 export const eventSchema = z.object({

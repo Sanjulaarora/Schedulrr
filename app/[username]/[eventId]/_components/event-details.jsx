@@ -22,10 +22,10 @@ export default function EventDetails({ event }) {
             <Clock className='mr-2' />
             <span>{event.duration} minutes</span>
         </div>
-        <div className='flex items-center mb-4'>
+        {/* <div className='flex items-center mb-4'>
             <Calendar className='mr-2' />
             <span>Google Meet</span>
-        </div>
+        </div> */}
         <p className='text-gray-700'>{event.description}</p>
     </div>
   );

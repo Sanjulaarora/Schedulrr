@@ -17,7 +17,7 @@ export default function AvailabilityForm ({ initialData }){
 
  const { register, handleSubmit, control, setValue, watch, formState: { errors }, } = useForm({
        resolver: zodResolver(availabilitySchema),
-       defaultValues: { ...initialData },
+       defaultValues: { ...initialData, meetType: initialData.meetType ?? true },
    });
 
    const {
@@ -134,6 +134,31 @@ export default function AvailabilityForm ({ initialData }){
                         {errors.timeGap.message}
                     </span>
                 )}
+            </div>
+            <div className='flex items-center space-x-4'>
+                <label htmlFor='meetType' className='w-48'>
+                    Meet Type:
+                </label>
+                <Controller 
+                    name='meetType' 
+                    control={control} 
+                    render = {({ field }) => 
+                        (
+                            <Select
+                             onValueChange = {(value) => field.onChange(value === 'true')}
+                             value = { field.value? 'true' : 'false' }
+                            >
+                                <SelectTrigger className="mt-1 w-32">
+                                    <SelectValue placeholder="Select Meet" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="true">Google Meet</SelectItem>
+                                    <SelectItem value="false">Zoom Meet</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        )
+                    }
+                />
             </div>
             {error && <div className='text-red-500 text-sm'>{error?.message}</div>}
             <Button type='submit' disabled={loading}>
